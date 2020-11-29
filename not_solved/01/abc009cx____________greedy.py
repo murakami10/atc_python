@@ -1,3 +1,4 @@
+#x
 import copy
 
 N, K = map(int, input().split())
