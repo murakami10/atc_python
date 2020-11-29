@@ -1,7 +1,6 @@
 
 N, D = map(int, input().split())
 
-
 num2 = 0
 num3 = 0
 num5 = 0
@@ -19,7 +18,7 @@ while D % 5 == 0:
     D /= 5
 
 # if num2 == 0 and num3 == 0 and num5 == 0 and D != 1: # これはだめ
-if D != 1: # これはいい
+if D != 1:  # これはいい
     print('0')
     exit()
 
@@ -42,3 +41,5 @@ for i in range(N):
                     dp[i+1][next2][next3][next5] += dp[i][k2][k3][k5]/6
 
 print(dp[N][num2][num3][num5])
+
+# https://atcoder.jp/contests/tdpc/tasks/tdpc_dice
