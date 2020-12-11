@@ -6,7 +6,7 @@ sys.setrecursionlimit(10**8)
 def dfs(x: int, c: int):
 
     global color
-    for r in rela[x]:
+    for r in relation[x]:
         if color[r] != -1:
             continue
 
@@ -21,14 +21,14 @@ def dfs(x: int, c: int):
 N = int(input())
 
 color = [-1] * (N+1)
-rela = [list() for _ in range(N+1)]
+relation = [list() for _ in range(N + 1)]
 
 length = collections.defaultdict(int)
 
 for _ in range(N-1):
     u, v, w = map(int, input().split())
-    rela[u].append(v)
-    rela[v].append(u)
+    relation[u].append(v)
+    relation[v].append(u)
     length[(u, v)] = w
     length[(v, u)] = w
 
@@ -38,3 +38,5 @@ dfs(1, 0)
 for i in range(1, N+1):
     print(color[i])
 
+
+# https://atcoder.jp/contests/abc126/tasks/abc126_d
