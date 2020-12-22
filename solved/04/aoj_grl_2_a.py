@@ -28,39 +28,24 @@ class UnionFind:
         return self.find(x) == self.find(y)
 
 
-H, W = map(int, input().split())
-Sx, Sy = map(int, input().split())
-Gx, Gy = map(int, input().split())
+v, e = map(int, input().split())
 
-p = []
+edge = []
 
-for _ in range(H):
-    p.append(list(map(int, input().split())))
+for _ in range(e):
+    s, t, w = map(int, input().split())
+    heapq.heappush(edge, (w, s, t))
 
-
-hp = []
-
-for i in range(W):
-    for j in range(H):
-        if i != W-1:
-            heapq.heappush(hp, [-p[j][i] * p[j][i+1], i+(j*W), i+1+(j*W)])
-        if j != H-1:
-            heapq.heappush(hp, [-p[j][i] * p[j+1][i], i+(j*W), i+(j*W)+W])
-
-uf = UnionFind(W*H-1)
-
+uf = UnionFind(v)
 ans = 0
-
-while hp:
-    item = heapq.heappop(hp)
+while edge:
+    item = heapq.heappop(edge)
     if uf.same_check(item[1], item[2]):
         continue
     uf.unit(item[1], item[2])
-    ans += -item[0]
-
-for i in range(H):
-    ans += sum(p[i])
+    ans += item[0]
 
 print(ans)
 
-# https://atcoder.jp/contests/indeednow-finalb-open/tasks/indeednow_2015_finalb_d
+# https://onlinejudge.u-aizu.ac.jp/problems/GRL_2_A
+
