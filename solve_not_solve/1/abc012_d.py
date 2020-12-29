@@ -30,4 +30,3 @@ for i in range(N):
 print(ans)
 
 # https://atcoder.jp/contests/abc012/tasks/abc012_4
-
