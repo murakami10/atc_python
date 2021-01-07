@@ -5,6 +5,9 @@ name = "pypi"
 
 [packages]
 numpy = "*"
+black = "*"
+flake8 = "*"
+mypy = "*"
 
 [dev-packages]
 
