@@ -1,4 +1,8 @@
 a.py
+.DS_STORE
+
+# vscode
+.idea
 
 #mypy
 .mypy_cache/
