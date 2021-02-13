@@ -4,7 +4,7 @@ N = int(input())
 
 table = collections.defaultdict(int)
 
-for i in range(2, N+1):
+for i in range(2, N + 1):
     tmp = i
     for j in range(2, int(pow(i, 0.5)) + 1):
         while tmp % j == 0:

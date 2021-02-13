@@ -1,7 +1,8 @@
-
 def gcd(x: int, y: int) -> int:
-    if y == 0: return x
+    if y == 0:
+        return x
     return gcd(y, x % y)
+
 
 N = int(input())
 
@@ -21,7 +22,7 @@ tmp = t[0] * t[1] // tmp
 ans = tmp
 for i in range(2, len(t)):
     ans = gcd(t[i], tmp)
-    tmp = t[i]*tmp // ans
+    tmp = t[i] * tmp // ans
     ans = tmp
 
 print(ans)

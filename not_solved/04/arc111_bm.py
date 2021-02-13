@@ -1,6 +1,8 @@
-from typing import Dict, List, Tuple
 import collections
 import sys  # 再帰の制限
+from typing import Dict
+from typing import List
+from typing import Tuple
 
 sys.setrecursionlimit(10 ** 8)
 

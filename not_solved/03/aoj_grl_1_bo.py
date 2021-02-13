@@ -1,5 +1,3 @@
-
-
 v, e, r = map(int, input().split())
 
 edges = []
@@ -9,7 +7,7 @@ for _ in range(e):
     edges.append((s, t, w))
 
 num = 0
-cost = [float('inf')] * v
+cost = [float("inf")] * v
 cost[r] = 0
 
 while True:
@@ -25,13 +23,13 @@ while True:
         break
 
     if num == v:
-        print('NEGATIVE CYCLE')
+        print("NEGATIVE CYCLE")
         exit()
     num += 1
 
 for i in cost:
-    if i == float('inf'):
-        print('INF')
+    if i == float("inf"):
+        print("INF")
     else:
         print(i)
 

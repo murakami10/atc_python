@@ -1,12 +1,10 @@
-import itertools, heapq
-
+import heapq
 
 
 class UnionFind:
-
     def __init__(self, n: int):
-        self.parent = [i for i in range(n+1)]
-        self.rank   = [0]*(n+1)
+        self.parent = [i for i in range(n + 1)]
+        self.rank = [0] * (n + 1)
 
     def find(self, x: int) -> int:
         if self.parent[x] == x:
@@ -29,36 +27,39 @@ class UnionFind:
         return self.find(x) == self.find(y)
 
 
-N = int(input())
+H, W = map(int, input().split())
+Sx, Sy = map(int, input().split())
+Gx, Gy = map(int, input().split())
 
-point = []
+p = []
+
+for _ in range(H):
+    p.append(list(map(int, input().split())))
+
+
 hp = []
 
-for i in range(N):
-    x, y = map(int, input().split())
-    point.append([x, y, i])
+for i in range(W):
+    for j in range(H):
+        if i != W - 1:
+            heapq.heappush(hp, [-p[j][i] * p[j][i + 1], i + (j * W), i + 1 + (j * W)])
+        if j != H - 1:
+            heapq.heappush(hp, [-p[j][i] * p[j + 1][i], i + (j * W), i + (j * W) + W])
 
-point.sort(key=lambda x: x[0])
+uf = UnionFind(W * H - 1)
 
-for i in range(N-1):
-    maximum = abs(point[i][0] - point[i+1][0])
-    heapq.heappush(hp, (maximum, point[i][2], point[i+1][2]))
-
-point.sort(key=lambda x: x[1])
-for i in range(N-1):
-    maximum = abs(point[i][1] - point[i+1][1])
-    heapq.heappush(hp, (maximum, point[i][2], point[i+1][2]))
-
-
-uf = UnionFind(N)
 ans = 0
+
 while hp:
     item = heapq.heappop(hp)
     if uf.same_check(item[1], item[2]):
         continue
     uf.unit(item[1], item[2])
-    ans += item[0]
+    ans += -item[0]
+
+for i in range(H):
+    ans += sum(p[i])
 
 print(ans)
 
-# https://atcoder.jp/contests/abc065/tasks/arc076_b
+# https://atcoder.jp/contests/indeednow-finalb-open/tasks/indeednow_2015_finalb_d

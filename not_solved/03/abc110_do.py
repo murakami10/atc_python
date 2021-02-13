@@ -1,5 +1,7 @@
-from typing import List, Tuple, Dict
 import collections
+from typing import Dict
+from typing import List
+from typing import Tuple
 
 
 def cmb(n: int, k: int, mod: int, fact: List[int], inv_fact: List[int]) -> int:

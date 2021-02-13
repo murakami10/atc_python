@@ -1,4 +1,5 @@
-from typing import List, Tuple
+from typing import List
+from typing import Tuple
 
 N, C = map(int, input().split())
 
